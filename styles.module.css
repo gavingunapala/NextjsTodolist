@@ -1,0 +1,12 @@
+.centerContent {
+  /* width: 700px;
+  height: 900px;
+  border: 1px solid #c3c3c3;
+  display: flex;
+  flex-wrap: wrap; */
+  align-content: center;
+}
+.formControl {
+  width: 300px;
+  height: 30px;
+}
