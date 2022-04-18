@@ -8,7 +8,6 @@ function home() {
   const [data, setdata] = useState([]);
   useEffect(() => {
     function getalldata() {
-      xxx;
       axios
         .get("https://jsonplaceholder.typicode.com/posts")
         .then((res) => {
