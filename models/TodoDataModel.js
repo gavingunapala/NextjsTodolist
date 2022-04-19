@@ -8,4 +8,5 @@ const NoteSchema = new mongoose.Schema({
     type: String,
   },
 });
-module.exports = mongoose.models.models || mongoose.model("models", NoteSchema);
+module.exports =
+  mongoose.models.TodoDataModel || mongoose.model("TodoDataModel", NoteSchema);
