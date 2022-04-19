@@ -1,17 +1,32 @@
 import "bootstrap/dist/css/bootstrap.css";
-import styles from "../styles.module.css";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { useRouter } from "next/router";
 
-function addtodo() {
-  // console.log(match.params.id);
+function edit() {
+  let router = useRouter();
+  let id = router.query.id;
   const [title, settitle] = useState("");
   const [body, setbody] = useState("");
 
   useEffect(() => {
-    //  if()
-  });
+    if (id) {
+      function getalldata() {
+        axios
+          .get(`http://localhost:3000/api/${id}`)
+          .then((res) => {
+            settitle(res.data.data.title);
+            setbody(res.data.data.body);
+          })
+          .catch((err) => {});
+      }
 
+      getalldata();
+    }
+  }, [id]);
+
+  console.log(title);
   // setters
   const titlesetter = (e) => {
     settitle(e.target.value);
@@ -26,9 +41,9 @@ function addtodo() {
       body: body,
     };
     axios
-      .post("http://localhost:3000/api/test", data)
+      .put(`http://localhost:3000/api/${id}`, data)
       .then(() => {
-        alert("added successfully!!!");
+        alert("updated successfully!!!");
       })
       .catch((err) => {
         alert(err);
@@ -38,8 +53,8 @@ function addtodo() {
 
   return (
     <div className="container">
-      <div className={styles.centerContent}>
-        <h1>Add Data</h1>
+      <div>
+        <h1>Update Data</h1>
         <br />
         <a href="/home">Home</a>
         <br /> <br />
@@ -51,7 +66,8 @@ function addtodo() {
             <input
               type="text"
               id="Title"
-              className={styles.formControl}
+              value={title}
+              // className={styles.formControl}
               onChange={titlesetter}
             />
           </div>
@@ -61,15 +77,16 @@ function addtodo() {
           <input
             type="text"
             id="ListTODO"
-            className={styles.formControl}
+            value={body}
+            // className={styles.formControl}
             onChange={bodySetter}
           />
-          <button id="add" class="btn btn-primary" onClick={submit}>
-            Add
+          <button id="add" className="btn btn-primary" onClick={submit}>
+            Update
           </button>
         </form>
       </div>
     </div>
   );
 }
-export default addtodo;
+export default edit;
