@@ -6,7 +6,7 @@ import Navbar from "../../components/GetData/navbar";
 import styles from "../../styles.module.css";
 
 function edit() {
-  let router = useRouter();
+  const router = useRouter();
   let id = router.query.id;
   const [title, settitle] = useState("");
   const [body, setbody] = useState("");
@@ -45,6 +45,7 @@ function edit() {
       .put(`http://localhost:3000/api/${id}`, data)
       .then(() => {
         alert("updated successfully!!!");
+        router.push("/home");
       })
       .catch((err) => {
         alert(err);

@@ -18,7 +18,7 @@ function home() {
         .catch((err) => {});
     }
     getalldata();
-  }, []);
+  }, [data]);
 
   //delete data from data base
   const deleteData = (id) => {

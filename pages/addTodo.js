@@ -3,9 +3,11 @@ import styles from "../styles.module.css";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/GetData/navbar";
+import { useRouter } from "next/router";
 
 function addtodo() {
-  // console.log(match.params.id);
+  const router = useRouter();
+
   const [title, settitle] = useState("");
   const [body, setbody] = useState("");
 
@@ -30,7 +32,9 @@ function addtodo() {
       .post("http://localhost:3000/api/test", data)
       .then(() => {
         alert("added successfully!!!");
+        router.push("/home");
       })
+
       .catch((err) => {
         alert(err);
       });
