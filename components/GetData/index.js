@@ -1,9 +1,12 @@
 import react from "react";
 const Post = (props) => {
   return (
-    <div className="container">
-      <h2>{props.title}</h2>
-      <p>{props.body}</p>
+    <div className="card">
+      <h2 className="card">Title : {props.title}</h2>
+      <div className="card">
+        <h5>Discription</h5>
+        <p>{props.body}</p>
+      </div>
     </div>
   );
 };

@@ -2,6 +2,8 @@ import Getdata from "../components/GetData";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
+import Navbar from "../components/GetData/navbar";
+import styles from "../styles.module.css";
 
 function home() {
   const [data, setdata] = useState([]);
@@ -25,13 +27,19 @@ function home() {
   };
 
   return (
-    <div className="container">
-      <h1>Home Page</h1>
+    <div>
+      <Navbar />
+      <br />
       {/* {JSON.stringify(data, null, 2)} */}
-      <a href="/addTodo">add data</a>
+      <div className={styles.rightbutton}>
+        <a href="/addTodo" class="btn btn-primary">
+          add data
+        </a>
+      </div>
+      <br />
       <br />
       {/* loop content */}
-      <div>
+      <div className="container ">
         {data?.map((onedata, key) => (
           <div key={onedata._id}>
             <Getdata title={onedata.title} body={onedata.body} />
@@ -53,6 +61,7 @@ function home() {
             >
               delete
             </a>
+            <br /> <br />
           </div>
         ))}
       </div>

@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import styles from "../styles.module.css";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Navbar from "../components/GetData/navbar";
 
 function addtodo() {
   // console.log(match.params.id);
@@ -37,37 +38,44 @@ function addtodo() {
   };
 
   return (
-    <div className="container">
-      <div className={styles.centerContent}>
-        <h1>Add Data</h1>
-        <br />
-        <a href="/home">Home</a>
-        <br /> <br />
-        <form id="form">
-          <div className="mb-3">
-            <label htmlFor="title" className="form-label">
-              Title
+    <div>
+      <Navbar />
+      <div className="container">
+        <div className={styles.centermain}>
+          <br />
+          <a href="/home" class="btn btn-primary">
+            Home
+          </a>
+          <br /> <br />
+          <form id="form" className={styles.center}>
+            <h1>Add Data</h1>
+            <br />
+            <div className="form-group">
+              <label htmlFor="title" className="form-label">
+                Title
+              </label>
+              <input
+                type="text"
+                id="Title"
+                className="form-control"
+                onChange={titlesetter}
+              />
+            </div>
+            <label htmlFor="Listitems" className="form-label">
+              List
             </label>
             <input
               type="text"
-              id="Title"
-              className={styles.formControl}
-              onChange={titlesetter}
+              id="ListTODO"
+              className="form-control"
+              onChange={bodySetter}
             />
-          </div>
-          <label htmlFor="Listitems" className="form-label">
-            List
-          </label>
-          <input
-            type="text"
-            id="ListTODO"
-            className={styles.formControl}
-            onChange={bodySetter}
-          />
-          <button id="add" class="btn btn-primary" onClick={submit}>
-            Add
-          </button>
-        </form>
+            <br />
+            <button id="add" class="btn btn-primary" onClick={submit}>
+              Add
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
