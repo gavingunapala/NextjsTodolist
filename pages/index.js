@@ -30,9 +30,10 @@ function home() {
     <div>
       <Navbar />
       <br />
+
       {/* {JSON.stringify(data, null, 2)} */}
       <div className={styles.rightbutton}>
-        <a href="/addTodo" class="btn btn-primary">
+        <a href="/addTodo" className="btn btn-primary">
           add data
         </a>
       </div>
@@ -42,7 +43,11 @@ function home() {
       <div className="container ">
         {data?.map((onedata, key) => (
           <div key={onedata._id}>
-            <Getdata title={onedata.title} body={onedata.body} />
+            <Getdata
+              title={onedata.title}
+              body={onedata.body}
+              date={onedata.todaydate}
+            />
             <a
               type="button"
               className="btn btn-success"

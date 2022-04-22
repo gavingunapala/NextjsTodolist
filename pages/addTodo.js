@@ -6,6 +6,11 @@ import Navbar from "../components/GetData/navbar";
 import { useRouter } from "next/router";
 
 function addtodo() {
+  const current = new Date();
+  const date = `${current.getDate()}/${
+    current.getMonth() + 1
+  }/${current.getFullYear()}`;
+
   const router = useRouter();
 
   const [title, settitle] = useState("");
@@ -27,6 +32,7 @@ function addtodo() {
     let data = {
       title: title,
       body: body,
+      todaydate: date,
     };
     axios
       .post("http://localhost:3000/api/test", data)
@@ -47,7 +53,7 @@ function addtodo() {
       <div className="container">
         <div className={styles.centermain}>
           <br />
-          <a href="/home" class="btn btn-primary">
+          <a href="/home" className="btn btn-primary">
             Home
           </a>
           <br /> <br />
@@ -74,8 +80,11 @@ function addtodo() {
               className="form-control"
               onChange={bodySetter}
             />
+            <label htmlFor="Listitems" className="form-label">
+              Today date is {date}
+            </label>
             <br />
-            <button id="add" class="btn btn-primary" onClick={submit}>
+            <button id="add" className="btn btn-primary" onClick={submit}>
               Add
             </button>
           </form>
