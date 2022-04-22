@@ -4,7 +4,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import Navbar from "../components/GetData/navbar";
 import styles from "../styles.module.css";
-import Head from "next/head";
+
 function home() {
   const [data, setdata] = useState([]);
   useEffect(() => {
@@ -13,7 +13,6 @@ function home() {
         .get("http://localhost:3000/api/test")
         .then((res) => {
           setdata(res.data.data.reverse());
-          console.log(res.data.data);
         })
         .catch((err) => {});
     }

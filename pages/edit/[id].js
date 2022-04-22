@@ -10,6 +10,7 @@ function edit() {
   let id = router.query.id;
   const [title, settitle] = useState("");
   const [body, setbody] = useState("");
+  const [date, setdate] = useState("");
 
   useEffect(() => {
     if (id) {
@@ -19,6 +20,7 @@ function edit() {
           .then((res) => {
             settitle(res.data.data.title);
             setbody(res.data.data.body);
+            setdate(res.data.data.todaydate);
           })
           .catch((err) => {});
       }
@@ -34,6 +36,9 @@ function edit() {
   };
   const bodySetter = (e) => {
     setbody(e.target.value);
+  };
+  const dateSetter = (e) => {
+    setdate(e.target.value);
   };
   const submit = (e) => {
     e.preventDefault();
@@ -87,6 +92,17 @@ function edit() {
               value={body}
               className="form-control"
               onChange={bodySetter}
+            />
+            <br />
+            <label htmlFor="Listitems" className="form-label">
+              created date
+            </label>
+            <input
+              type="text"
+              id="ListTODO"
+              value={date}
+              className="form-control"
+              readOnly="true"
             />
             <br />
             <button id="add" className="btn btn-primary" onClick={submit}>
