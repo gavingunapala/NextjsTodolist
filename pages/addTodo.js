@@ -32,7 +32,7 @@ function addtodo() {
       .post("http://localhost:3000/api/test", data)
       .then(() => {
         alert("added successfully!!!");
-        router.push("/home");
+        router.push("/");
       })
 
       .catch((err) => {

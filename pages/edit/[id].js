@@ -45,7 +45,7 @@ function edit() {
       .put(`http://localhost:3000/api/${id}`, data)
       .then(() => {
         alert("updated successfully!!!");
-        router.push("/home");
+        router.push("/");
       })
       .catch((err) => {
         alert(err);

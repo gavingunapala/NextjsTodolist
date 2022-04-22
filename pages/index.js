@@ -1,13 +1,71 @@
-import Head from "next/head";
 import Getdata from "../components/GetData";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
+import Navbar from "../components/GetData/navbar";
+import styles from "../styles.module.css";
+import Head from "next/head";
+function home() {
+  const [data, setdata] = useState([]);
+  useEffect(() => {
+    function getalldata() {
+      axios
+        .get("http://localhost:3000/api/test")
+        .then((res) => {
+          setdata(res.data.data.reverse());
+          console.log(res.data.data);
+        })
+        .catch((err) => {});
+    }
+    getalldata();
+  }, [data]);
 
-export default function Home() {
+  //delete data from data base
+  const deleteData = (id) => {
+    console.log(id);
+    axios.delete(`http://localhost:3000/api/${id}`);
+  };
+
   return (
-    <div className="container">
-      <h1>Title</h1>
-      <div>
-        <Getdata />
+    <div>
+      <Navbar />
+      <br />
+      {/* {JSON.stringify(data, null, 2)} */}
+      <div className={styles.rightbutton}>
+        <a href="/addTodo" class="btn btn-primary">
+          add data
+        </a>
+      </div>
+      <br />
+      <br />
+      {/* loop content */}
+      <div className="container ">
+        {data?.map((onedata, key) => (
+          <div key={onedata._id}>
+            <Getdata title={onedata.title} body={onedata.body} />
+            <a
+              type="button"
+              className="btn btn-success"
+              href={`/edit/${encodeURIComponent(onedata._id)}`}
+            >
+              edit
+            </a>
+            <a
+              type="button"
+              className="btn btn-danger"
+              onClick={() => {
+                if (window.confirm("Are you sure you want to delete this?")) {
+                  deleteData(onedata._id);
+                }
+              }}
+            >
+              delete
+            </a>
+            <br /> <br />
+          </div>
+        ))}
       </div>
     </div>
   );
 }
+export default home;
