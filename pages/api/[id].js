@@ -1,6 +1,8 @@
 import dbConnect from "../../utils/dbConnect";
 import models from "../../models/TodoDataModel";
+import cors from "cors";
 
+cors();
 dbConnect();
 export default async (req, res) => {
   const {
