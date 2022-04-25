@@ -47,7 +47,7 @@ function edit() {
       body: body,
     };
     axios
-      .put(`http://localhost:3000/api/${id}`, data)
+      .put(`/api/${id}`, data)
       .then(() => {
         alert("updated successfully!!!");
         router.push("/");

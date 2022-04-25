@@ -10,7 +10,7 @@ function home() {
   useEffect(() => {
     function getalldata() {
       axios
-        .get("http://localhost:3000/api/test")
+        .get("/api/test")
         .then((res) => {
           setdata(res.data.data.reverse());
         })
@@ -22,7 +22,7 @@ function home() {
   //delete data from data base
   const deleteData = (id) => {
     console.log(id);
-    axios.delete(`http://localhost:3000/api/${id}`);
+    axios.delete(`/api/${id}`);
   };
 
   return (

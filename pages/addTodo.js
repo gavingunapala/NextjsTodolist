@@ -35,7 +35,7 @@ function addtodo() {
       todaydate: date,
     };
     axios
-      .post("http://localhost:3000/api/test", data)
+      .post("/api/test", data)
       .then(() => {
         alert("added successfully!!!");
         router.push("/");
