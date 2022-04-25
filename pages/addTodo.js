@@ -53,7 +53,7 @@ function addtodo() {
       <div className="container">
         <div className={styles.centermain}>
           <br />
-          <a href="/home" className="btn btn-primary">
+          <a href="/" className="btn btn-primary">
             Home
           </a>
           <br /> <br />
