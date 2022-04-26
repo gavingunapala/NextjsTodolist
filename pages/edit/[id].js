@@ -11,9 +11,9 @@ function edit() {
   const [title, settitle] = useState("");
   const [body, setbody] = useState("");
   const [date, setdate] = useState("");
-  console.log(id);
 
   useEffect(() => {
+    console.log(id);
     if (id) {
       function getalldata() {
         axios
@@ -65,7 +65,7 @@ function edit() {
       <div className="container">
         <div className={styles.centermain}>
           <br />
-          <a href="/home" class="btn btn-primary">
+          <a href="/home" className="btn btn-primary">
             Home
           </a>
           <br /> <br />
@@ -103,7 +103,7 @@ function edit() {
               id="ListTODO"
               value={date}
               className="form-control"
-              readOnly="true"
+              readOnly="TRUE"
             />
             <br />
             <button id="add" className="btn btn-primary" onClick={submit}>
