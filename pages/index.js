@@ -10,7 +10,7 @@ function home() {
   useEffect(() => {
     function getalldata() {
       axios
-        .get("/api/test")
+        .get(`/api/test`)
         .then((res) => {
           setdata(res.data.data.reverse());
         })
