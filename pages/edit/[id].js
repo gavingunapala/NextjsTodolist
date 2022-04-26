@@ -11,6 +11,7 @@ function edit() {
   const [title, settitle] = useState("");
   const [body, setbody] = useState("");
   const [date, setdate] = useState("");
+  console.log(id);
 
   useEffect(() => {
     if (id) {
