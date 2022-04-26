@@ -16,7 +16,7 @@ function edit() {
     if (id) {
       function getalldata() {
         axios
-          .get(`http://localhost:3000/api/${id}`)
+          .get(`/api/${id}`)
           .then((res) => {
             settitle(res.data.data.title);
             setbody(res.data.data.body);
