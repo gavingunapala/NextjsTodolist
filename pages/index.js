@@ -10,7 +10,7 @@ function home() {
   useEffect(() => {
     function getalldata() {
       axios
-        .get("https:/cors-anywhere.herokuapp.com/api/test")
+        .get("/api/test")
         .then((res) => {
           setdata(res.data.data.reverse());
         })
